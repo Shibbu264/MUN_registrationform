@@ -131,7 +131,19 @@ function sendEmail() {
 }
 
 document.getElementById("register1").addEventListener("click",function(){
-  document.getElementById("register2").style.display="inline"
-  document.getElementById("register3").style.display="inline"
-  document.getElementById("transformtotext").innerHTML=`<h1 class="newbuttoncont">Register as:</h1>`
-})
+  const name = document.getElementById("name_field").value;
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+  const institute = document.getElementById("Insitute").value;
+  
+  const email = document.getElementById("email_field").value;
+  
+  if (name && age && gender && institute && region && email) {
+   
+    document.getElementById("register2").style.display = "inline";
+    document.getElementById("register3").style.display = "inline";
+    document.getElementById("transformtotext").innerHTML = `<h1 class="newbuttoncont">Register as:</h1>`;
+  } else {
+    
+    alert("Please fill in all the important inputs first.");
+  }})
