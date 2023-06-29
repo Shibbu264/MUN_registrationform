@@ -11,3 +11,71 @@
     text-align: center;
     margin-bottom: 20px;
   }
+  .registeroptions{
+display: flex;
+justify-content: space-between;
+gap:20px;
+  }
+  .newbuttoncont{
+font-weight: bolder;
+font-size: larger;
+margin: 0 auto;
+display: block;
+text-align: center;
+margin-bottom: 8px;
+
+  }
+  #register2,#register3{
+    display: none;
+    
+  }
+  #register2{text-align: center;
+    
+  padding-left: 20px;
+  }
+  .tooltip {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .registeroptions button {
+    position: relative;
+  }
+  
+  .registeroptions button::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    max-width: 660px;
+    min-width: 400px;
+    max-height: 280px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+   
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+  }
+  
+  .registeroptions button:hover::before {
+    visibility: visible;
+    opacity: 1;
+  }
+  

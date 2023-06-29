@@ -1,5 +1,4 @@
 
-import { SMTPClient } from './emailjs';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"
 import { getDatabase,ref,push,set } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"
 const appSettings = {
@@ -9,36 +8,53 @@ const app=initializeApp(appSettings)
 const database=getDatabase(app)
 
 
-    document.getElementById('registrationForm').addEventListener("submit", submitForm);
+    document.getElementById('register2').addEventListener("click", submitForm1);
+    document.getElementById('register3').addEventListener("click", submitForm2);
 
 
-var db_ref = ref(database, "records")
+var db_ref1 = ref(database, "records of single delegates")
+var db_ref2 = ref(database, "records of Conference ambassadors")
 
 function getInput(id) {
-    return document.getElementById(id).value;
+    let abc= document.getElementById(id).value;
+    if (abc==null){return " "}
+    else{return abc}
 }
 
-function submitForm(e) {
+function submitForm1(e) {
+  
     e.preventDefault();
-    saveRec(getInput('name_field'), getInput('email_field'), getInput('country_field'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'));
+    saveRec1(getInput('name_field'), getInput('email_field'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
    
 }
-function saveRec(name, email, country,pref1,pref2,pref3,delegatecountry,age) {
-    const dbRef = ref(database, "records");
+function submitForm2(e) {
+  
+  e.preventDefault();
+  saveRec2(getInput('name_field'), getInput('email_field'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
+ 
+}
+function saveRec1(name, email,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
+    const dbRef1 = ref(database, "records of single delegates");
     if(pref1!=pref2&&pref2!=pref3){
-    const newRec = push(dbRef);
+    const newRec = push(dbRef1);
     set(newRec, {
       name: name,
       email: email,
-      country: country,
+      delegatecountry: delegatecountry,
       preference1:pref1,
       preference2:pref2,
       preference3:pref3,
-      Delegate_country:delegatecountry,
-      Age:age
+      Age:age,
+      Gender:gender,
+      Institute:Institute,
+      Region:region,
+      MUNcount:muncount,
+      PastAwards:pastaward,
+      Referralcode:refferalcode
+
     }).then(() => {
       // Registration successful
-      sendEmail()
+      
       alert("Registration successful! Check your Email!");
      
     }).catch((error) => {
@@ -51,6 +67,41 @@ else{
     alert("Preferences can't be same!")
 }
 }
+function saveRec2(name, email,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
+  const dbRef2 = ref(database, "records of Conference ambassadors");
+  if(pref1!=pref2&&pref2!=pref3){
+  const newRec = push(dbRef2);
+  set(newRec, {
+    name: name,
+    email: email,
+    delegatecountry: delegatecountry,
+    preference1:pref1,
+    preference2:pref2,
+    preference3:pref3,
+    Age:age,
+    Gender:gender,
+    Institute:Institute,
+    Region:region,
+    MUNcount:muncount,
+    PastAwards:pastaward,
+    Referralcode:refferalcode
+
+  }).then(() => {
+    // Registration successful
+    
+    alert("Registration successful! Check your Email!");
+   
+  }).catch((error) => {
+    // Error handling
+    alert("Registration failed: " + error.message);
+  });
+  document.getElementById("registrationForm").reset();
+}
+else{
+  alert("Preferences can't be same!")
+}
+}
+
 
 
 
@@ -78,3 +129,9 @@ function sendEmail() {
     }
   );
 }
+
+document.getElementById("register1").addEventListener("click",function(){
+  document.getElementById("register2").style.display="inline"
+  document.getElementById("register3").style.display="inline"
+  document.getElementById("transformtotext").innerHTML=`<h1 class="newbuttoncont">Register as:</h1>`
+})
