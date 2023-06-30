@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"
 import { getDatabase,ref,push,set } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"
 const appSettings = {
-    databaseURL: "https://munnew-844b8-default-rtdb.firebaseio.com/"
+    databaseURL: "https://mun-2023-default-rtdb.firebaseio.com/"
 }
 const app=initializeApp(appSettings)
 const database=getDatabase(app)
