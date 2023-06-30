@@ -136,11 +136,10 @@ document.getElementById("register1").addEventListener("click",function(){
   const name = document.getElementById("name_field").value;
   const age = document.getElementById("age").value;
   const gender = document.getElementById("gender").value;
-  const institute = document.getElementById("Insitute").value;
-  
+ 
   const email = document.getElementById("email_field").value;
-  
-  if (name && age && gender && institute && region && email) {
+  const password=document.getElementById("password").value;
+  if (name && age && gender   && email && password) {
    
     document.getElementById("register2").style.display = "inline";
     document.getElementById("register3").style.display = "inline";
