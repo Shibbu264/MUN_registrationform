@@ -24,22 +24,23 @@ function getInput(id) {
 function submitForm1(e) {
   
     e.preventDefault();
-    saveRec1(getInput('name_field'), getInput('email_field'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
+    saveRec1(getInput('name_field'), getInput('email_field'),getInput('password'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
    
 }
 function submitForm2(e) {
   
   e.preventDefault();
-  saveRec2(getInput('name_field'), getInput('email_field'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
+  saveRec2(getInput('name_field'), getInput('email_field'),getInput('password'), getInput('pref1'), getInput('pref2'), getInput('pref3'), getInput('delegatecountry'), getInput('age'),getInput('gender'),getInput('Institute'),getInput('region'),getInput('muncount'),getInput('pastaward'),getInput('refferalcode'),);
  
 }
-function saveRec1(name, email,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
+function saveRec1(name, email,password,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
     const dbRef1 = ref(database, "records of single delegates");
     if(pref1!=pref2&&pref2!=pref3){
     const newRec = push(dbRef1);
     set(newRec, {
       name: name,
       email: email,
+      Password:password,
       delegatecountry: delegatecountry,
       preference1:pref1,
       preference2:pref2,
@@ -67,13 +68,14 @@ else{
     alert("Preferences can't be same!")
 }
 }
-function saveRec2(name, email,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
+function saveRec2(name, email,password,pref1,pref2,pref3,delegatecountry,age,gender,Institute,region,muncount,pastaward,refferalcode) {
   const dbRef2 = ref(database, "records of Conference ambassadors");
   if(pref1!=pref2&&pref2!=pref3){
   const newRec = push(dbRef2);
   set(newRec, {
     name: name,
     email: email,
+    Password:password,
     delegatecountry: delegatecountry,
     preference1:pref1,
     preference2:pref2,
